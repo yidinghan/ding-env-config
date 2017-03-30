@@ -13,9 +13,11 @@ test.before(() => {
 test('should load mongo db', (t) => {
   const config = envConfig();
   t.is(config.mongo.db, 'mongo.db1');
+  t.is(Object.keys(config).length, 1);
 });
 
 test('should load mongo db with another separator', (t) => {
   const config = envConfig({ separator: '__' });
   t.is(config.mongo.db, 'mongo.db2');
+  t.is(Object.keys(config).length, 1);
 });
