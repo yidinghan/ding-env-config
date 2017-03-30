@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/yidinghan/env-config#readme",
   "devDependencies": {
+    "ava": "^0.18.2",
     "eslint": "^3.18.0",
     "eslint-config-airbnb-base": "^11.1.2",
     "eslint-plugin-import": "^2.2.0"
