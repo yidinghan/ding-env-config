@@ -1,5 +1,4 @@
 const set = require('lodash.set');
-const defaults = require('lodash.defaults');
 const zipObject = require('lodash.zipobject');
 
 // once there are somethings like `CONFIG_mongo_db` in env,
@@ -11,20 +10,15 @@ const zipObject = require('lodash.zipobject');
  * @param {Object} option.setting - description
  * @returns {Object}
  */
-module.exports = (option = {}) => {
-  const opt = defaults(option, {
-    setting: {},
-    prefix: 'CONFIG',
-    separator: '_',
-  });
-  const { setting, separator } = opt;
+module.exports = (payload = {}) => {
+  const { setting = {}, separator = '_', prefix = 'CONFIG' } = payload;
   const separatorRe = new RegExp(separator, 'g');
 
   Object.keys(process.env).forEach((key) => {
     const val = process.env[key];
-    if (!key.startsWith(opt.prefix)) { return; }
+    if (!key.startsWith(prefix)) { return; }
 
-    const prefixLen = opt.prefix.length + separator.length;
+    const prefixLen = prefix.length + separator.length;
     const pathWithType = key.slice(prefixLen).split(`${separator}${separator}`);
     const envOpt = zipObject(['keyPath', 'valType'], pathWithType);
     if (!envOpt.keyPath) { return; }
