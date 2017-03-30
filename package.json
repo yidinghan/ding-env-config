@@ -1,5 +1,5 @@
 {
-  "name": "env-config",
+  "name": "ding-env-config",
   "version": "1.0.0",
   "description": "read configuration form environment by specified format",
   "main": "index.js",
