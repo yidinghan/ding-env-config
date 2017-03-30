@@ -1,5 +1,4 @@
 const set = require('lodash.set');
-const zipObject = require('lodash.zipobject');
 
 // once there are somethings like `CONFIG_mongo_db` in env,
 // the codes below will turn `config.kafkaConsumer.handlerConcurrency`
@@ -19,14 +18,13 @@ module.exports = (payload = {}) => {
     if (!key.startsWith(prefix)) { return; }
 
     const prefixLen = prefix.length + separator.length;
-    const pathWithType = key.slice(prefixLen).split(`${separator}${separator}`);
-    const envOpt = zipObject(['keyPath', 'valType'], pathWithType);
-    if (!envOpt.keyPath) { return; }
+    const [configPath, configType] = key.slice(prefixLen).split(`${separator}${separator}`);
+    if (!configPath) { return; }
 
-    envOpt.keyPath = envOpt.keyPath.replace(separatorRe, '.');
+    const finalPath = configPath.replace(separatorRe, '.');
     // every val should be string as default
-    envOpt.finalVal = envOpt.valType === 'number' ? Number(val) : val;
-    set(config, envOpt.keyPath, envOpt.finalVal);
+    const finalVal = configType === 'number' ? Number(val) : val;
+    set(config, finalPath, finalVal);
   });
 
   return config;
