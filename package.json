@@ -1,0 +1,23 @@
+{
+  "name": "env-config",
+  "version": "1.0.0",
+  "description": "read configuration form environment by specified format",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yidinghan/env-config.git"
+  },
+  "keywords": [
+    "config",
+    "node"
+  ],
+  "author": "yidinghan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yidinghan/env-config/issues"
+  },
+  "homepage": "https://github.com/yidinghan/env-config#readme"
+}
