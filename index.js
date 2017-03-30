@@ -2,6 +2,7 @@ const set = require('lodash.set');
 
 const types = {
   string: String,
+  num: Number,
   number: Number,
 };
 

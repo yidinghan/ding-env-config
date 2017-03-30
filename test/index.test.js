@@ -5,7 +5,8 @@ const ENV = {
   CONFIG_mongo_db: 'mongo.db1',
   CONFIG__mongo__db: 'mongo.db2',
   ACONFIG_mongo_db: 'mongo.db3',
-  CONFIG_mongo_port__number: '3434',
+  BCONFIG_mongo_port__number: '3434',
+  CCONFIG_mongo_port__num: '3435',
 };
 
 test.before(() => {
@@ -14,24 +15,45 @@ test.before(() => {
 
 test('should load mongo db', (t) => {
   const config = envConfig();
-  t.is(Object.keys(config).length, 1);
-  t.is(config.mongo.db, 'mongo.db1');
+  t.deepEqual(config, {
+    mongo: {
+      db: 'mongo.db1',
+    },
+  });
 });
 
 test('should load mongo db with another separator', (t) => {
   const config = envConfig({ separator: '__' });
-  t.is(Object.keys(config).length, 1);
-  t.is(config.mongo.db, 'mongo.db2');
+  t.deepEqual(config, {
+    mongo: {
+      db: 'mongo.db2',
+    },
+  });
 });
 
 test('should load mongo db with another prefix', (t) => {
   const config = envConfig({ prefix: 'ACONFIG' });
-  t.is(Object.keys(config).length, 1);
-  t.is(config.mongo.db, 'mongo.db3');
+  t.deepEqual(config, {
+    mongo: {
+      db: 'mongo.db3',
+    },
+  });
 });
 
 test('should load mongo port with type number', (t) => {
-  const config = envConfig();
-  t.is(Object.keys(config).length, 1);
-  t.is(config.mongo.port, 3434);
+  const config = envConfig({ prefix: 'BCONFIG' });
+  t.deepEqual(config, {
+    mongo: {
+      port: 3434,
+    },
+  });
+});
+
+test('should load mongo db with type num', (t) => {
+  const config = envConfig({ prefix: 'CCONFIG' });
+  t.deepEqual(config, {
+    mongo: {
+      port: 3435,
+    },
+  });
 });
