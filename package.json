@@ -6,7 +6,7 @@
   "scripts": {
     "test": "ava",
     "nyc": "nyc npm test && nyc report --reporter=text-lcov",
-    "coveralls": "npm run nyc | coveralls"
+    "coveralls": "npm run nyc | ./node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
