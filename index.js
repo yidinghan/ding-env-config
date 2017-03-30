@@ -7,11 +7,11 @@ const zipObject = require('lodash.zipobject');
 /**
  * envLoader
  *
- * @param {Object} option.setting - description
+ * @param {Object} option.config - description
  * @returns {Object}
  */
 module.exports = (payload = {}) => {
-  const { setting = {}, separator = '_', prefix = 'CONFIG' } = payload;
+  const { config = {}, separator = '_', prefix = 'CONFIG' } = payload;
   const separatorRe = new RegExp(separator, 'g');
 
   Object.keys(process.env).forEach((key) => {
@@ -26,9 +26,9 @@ module.exports = (payload = {}) => {
     envOpt.keyPath = envOpt.keyPath.replace(separatorRe, '.');
     // every val should be string as default
     envOpt.finalVal = envOpt.valType === 'number' ? Number(val) : val;
-    set(setting, envOpt.keyPath, envOpt.finalVal);
+    set(config, envOpt.keyPath, envOpt.finalVal);
   });
 
-  return setting;
+  return config;
 };
 
