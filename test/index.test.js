@@ -5,6 +5,7 @@ const ENV = {
   CONFIG_mongo_db: 'mongo.db1',
   CONFIG__mongo__db: 'mongo.db2',
   ACONFIG_mongo_db: 'mongo.db3',
+  CONFIG_mongo_port__number: '3434',
 };
 
 test.before(() => {
@@ -29,9 +30,8 @@ test('should load mongo db with another prefix', (t) => {
   t.is(config.mongo.db, 'mongo.db3');
 });
 
-test('should load mongo db with pre define config', (t) => {
-  const config = envConfig({ config: { foo: 'bar' } });
-  t.is(Object.keys(config).length, 2);
-  t.is(config.mongo.db, 'mongo.db1');
-  t.is(config.foo, 'bar');
+test('should load mongo port with type number', (t) => {
+  const config = envConfig();
+  t.is(Object.keys(config).length, 1);
+  t.is(config.mongo.port, 3434);
 });
