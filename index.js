@@ -15,10 +15,11 @@ module.exports = (payload = {}) => {
 
   Object.keys(process.env).forEach((key) => {
     const val = process.env[key];
-    if (!key.startsWith(prefix)) { return; }
+    const validPrefix = prefix + separator;
+    if (!key.startsWith(validPrefix)) { return; }
 
-    const prefixLen = prefix.length + separator.length;
-    const [configPath, configType] = key.slice(prefixLen).split(`${separator}${separator}`);
+    const [configPath, configType] = key.slice(validPrefix.length)
+      .split(`${separator}${separator}`);
     if (!/^[a-zA-Z]+/.test(configPath)) { return; }
 
     const finalPath = configPath.replace(separatorRe, '.');
