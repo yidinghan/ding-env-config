@@ -2,5 +2,11 @@ language: node_js
 node_js:
   - 7
   - 6
+cache:
+  directories:
+    - $HOME/.npm
+    - node_modules
+before_script:
+  - 'npm prune'
 after_success:
   - '[ -z "$COVERALLS_REPO_TOKEN" ] && npm run coveralls'
