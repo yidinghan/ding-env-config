@@ -1,5 +1,10 @@
 const set = require('lodash.set');
 
+const types = {
+  string: String,
+  number: Number,
+};
+
 // once there are somethings like `CONFIG_mongo_db` in env,
 // the codes below will turn `config.kafkaConsumer.handlerConcurrency`
 // to the env val and val will be number
@@ -18,13 +23,13 @@ module.exports = (payload = {}) => {
     const validPrefix = prefix + separator;
     if (!key.startsWith(validPrefix)) { return; }
 
-    const [configPath, configType] = key.slice(validPrefix.length)
+    const [configPath, configType = 'string'] = key.slice(validPrefix.length)
       .split(`${separator}${separator}`);
-    if (!/^[a-zA-Z]+/.test(configPath)) { return; }
+    if (!(/^[a-zA-Z]+/.test(configPath) && configType in types)) { return; }
 
     const finalPath = configPath.replace(separatorRe, '.');
     // every val should be string as default
-    const finalVal = configType === 'number' ? Number(val) : val;
+    const finalVal = types[configType](val);
     set(config, finalPath, finalVal);
   });
 
