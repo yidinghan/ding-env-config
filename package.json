@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yidinghan/env-config.git"
+    "url": "git+https://github.com/yidinghan/ding-evn-config.git"
   },
   "keywords": [
     "config",
@@ -19,9 +19,9 @@
   "author": "yidinghan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yidinghan/env-config/issues"
+    "url": "https://github.com/yidinghan/ding-evn-config/issues"
   },
-  "homepage": "https://github.com/yidinghan/env-config#readme",
+  "homepage": "https://github.com/yidinghan/ding-evn-config#readme",
   "devDependencies": {
     "ava": "^0.18.2",
     "coveralls": "^2.12.0",
