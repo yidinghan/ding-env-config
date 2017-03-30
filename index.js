@@ -19,7 +19,7 @@ module.exports = (payload = {}) => {
 
     const prefixLen = prefix.length + separator.length;
     const [configPath, configType] = key.slice(prefixLen).split(`${separator}${separator}`);
-    if (/^\w+/.config) { return; }
+    if (!/^[a-zA-Z]+/.test(configPath)) { return; }
 
     const finalPath = configPath.replace(separatorRe, '.');
     // every val should be string as default
