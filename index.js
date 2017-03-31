@@ -10,15 +10,46 @@ const types = {
 
 /**
  * once there are somethings like `CONFIG_mongo_db` in env,
- * the codes below will turn `config.kafkaConsumer.handlerConcurrency`
- * to the env val and val will be number
+ * the codes below will set `config.mongo.db` to the env val
  * @param {object} [payload] - input arguments
  * @param {object} [payload.config={}] - default config object
  * @param {string} [payload.separator=_] - symbol between key path and prefix
  * @param {string} [payload.prefix=CONFIG] - prefix to match target environment
  * @returns {object} parse out config
+ * @example
+ * // export CONFIG_mongo_db=db1
+ * const config = envConfig();
+ * // {
+ * //   "mongo": {
+ * //     "db": "db1"
+ * //   }
+ * // }
+ *
+ * // export CONFIG_mongo_port__num=27017
+ * const config = envConfig();
+ * // {
+ * //   "mongo": {
+ * //     "port": 27017
+ * //   }
+ * // }
+ *
+ * // export CONFIG_mongo_flag=true
+ * const config = envConfig();
+ * // {
+ * //   "mongo": {
+ * //     "flag": "true"
+ * //   }
+ * // }
+ *
+ * // export CONFIG_mongo_flag__bool=true
+ * const config = envConfig();
+ * // {
+ * //   "mongo": {
+ * //     "flag": true
+ * //   }
+ * // }
  **/
-module.exports = (payload = {}) => {
+const envConfig = (payload = {}) => {
   const { config = {}, separator = '_', prefix = 'CONFIG' } = payload;
   const separatorRe = new RegExp(separator, 'g');
 
@@ -40,3 +71,4 @@ module.exports = (payload = {}) => {
   return config;
 };
 
+module.exports = envConfig;
