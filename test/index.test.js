@@ -7,6 +7,8 @@ const ENV = {
   ACONFIG_mongo_db: 'mongo.db3',
   BCONFIG_mongo_port__number: '3434',
   CCONFIG_mongo_port__num: '3435',
+  DCONFIG_mongo_flag__boolean: '1',
+  ECONFIG_mongo_flag__bool: '',
 };
 
 test.before(() => {
@@ -54,6 +56,24 @@ test('should load mongo db with type num', (t) => {
   t.deepEqual(config, {
     mongo: {
       port: 3435,
+    },
+  });
+});
+
+test('should load mongo db with type bool', (t) => {
+  const config = envConfig({ prefix: 'DCONFIG' });
+  t.deepEqual(config, {
+    mongo: {
+      flag: true,
+    },
+  });
+});
+
+test('should load mongo db with type boolean', (t) => {
+  const config = envConfig({ prefix: 'ECONFIG' });
+  t.deepEqual(config, {
+    mongo: {
+      flag: false,
     },
   });
 });

@@ -1,6 +1,8 @@
 const set = require('lodash.set');
 
 const types = {
+  boolean: Boolean,
+  bool: Boolean,
   string: String,
   num: Number,
   number: Number,
