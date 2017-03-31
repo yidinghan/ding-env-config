@@ -6,14 +6,37 @@
 
 read configuration form environment by specified format
 
+# Getting Start
+
+## NPM
+
+install
+
+```shell
+npm i -S ding-env-config
+```
+
+## Usage
+
+```js
+// export CONFIG_mongo_db=db1
+const envConfig = require('ding-env-config');
+const config = envConfig();
+// {
+//   "mongo": {
+//     "db": "db1"
+//   }
+// }
+```
+
 <a name="envConfig"></a>
 
 ## envConfig([payload]) ⇒ <code>object</code>
 once there are somethings like `CONFIG_mongo_db` in env,
 the codes below will set `config.mongo.db` to the env val
 
-**Kind**: global function  
-**Returns**: <code>object</code> - parse out config  
+**Kind**: global function
+**Returns**: <code>object</code> - parse out config
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -22,7 +45,7 @@ the codes below will set `config.mongo.db` to the env val
 | [payload.separator] | <code>string</code> | <code>&quot;_&quot;</code> | symbol between key path and prefix |
 | [payload.prefix] | <code>string</code> | <code>&quot;CONFIG&quot;</code> | prefix to match target environment |
 
-**Example**  
+**Example**
 ```js
 // export CONFIG_mongo_db=db1
 const config = envConfig();
