@@ -1,5 +1,7 @@
 # env-config
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/yidinghan/ding-env-config.svg)](https://greenkeeper.io/)
+
 [![Travis](https://img.shields.io/travis/yidinghan/ding-env-config.svg?style=flat-square)]()
 [![Coveralls](https://img.shields.io/coveralls/yidinghan/ding-env-config.svg?style=flat-square)]()
 [![npm](https://img.shields.io/npm/dm/ding-env-config.svg?style=flat-square)]()
