@@ -24,11 +24,11 @@
   "homepage": "https://github.com/yidinghan/ding-evn-config#readme",
   "devDependencies": {
     "ava": "^0.25.0",
-    "coveralls": "^3.0.0",
-    "eslint": "^4.1.1",
-    "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-import": "^2.6.0",
-    "nyc": "^11.0.2"
+    "coveralls": "^3.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "nyc": "^11.7.2"
   },
   "dependencies": {
     "lodash.set": "^4.3.2"
