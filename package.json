@@ -28,7 +28,7 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
-    "nyc": "^11.7.2"
+    "nyc": "^12.0.2"
   },
   "dependencies": {
     "lodash.set": "^4.3.2"
