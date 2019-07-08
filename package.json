@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/yidinghan/ding-evn-config#readme",
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^2.2.0",
     "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
